@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://db6xgxrcg8k35"
+path="res://.godot/imported/Countdown.mp3-7f306fcec9b5fe46e557597573753004.mp3str"
+
+[deps]
+
+source_file="res://3D sounds/Countdown.mp3"
+dest_files=["res://.godot/imported/Countdown.mp3-7f306fcec9b5fe46e557597573753004.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

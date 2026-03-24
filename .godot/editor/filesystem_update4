@@ -1,2 +1,3 @@
-res://level.tscn
+res://player_car.tscn
+res://CountdownUI.gd
 res://player_car.gd

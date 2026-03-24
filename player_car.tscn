@@ -1,7 +1,11 @@
-[gd_scene load_steps=14 format=4 uid="uid://ccb1cxwy30wa2"]
+[gd_scene format=4 uid="uid://ccb1cxwy30wa2"]
 
-[ext_resource type="Script" path="res://player_car.gd" id="1_thhfg"]
+[ext_resource type="Script" uid="uid://c4g0ufo546kwu" path="res://player_car.gd" id="1_thhfg"]
 [ext_resource type="PackedScene" uid="uid://ek8rdkbce8fr" path="res://assets/meshes/car/low_poly_f1_car.glb" id="2_6mdng"]
+[ext_resource type="Script" uid="uid://pdlr1gavy6bq" path="res://CountdownUI.gd" id="3_in3s4"]
+[ext_resource type="AudioStream" uid="uid://ds4xlvswm56o8" path="res://3D sounds/Background.mp3" id="4_0hd3m"]
+[ext_resource type="AudioStream" uid="uid://bs2jdccnkvvj1" path="res://3D sounds/Acceleration.mp3" id="5_a51iv"]
+[ext_resource type="AudioStream" uid="uid://b6x8qrwaah5j4" path="res://3D sounds/CarStart.mp3" id="6_e8a30"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_23kn7"]
 size = Vector3(4.20941, 1.6541, 11.3582)
@@ -148,24 +152,26 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_t1j5f")
 
-[node name="PlayerCar" type="VehicleBody3D" node_paths=PackedStringArray("wheel_front_left", "wheel_front_right")]
+[sub_resource type="FontVariation" id="FontVariation_in3s4"]
+
+[node name="PlayerCar" type="VehicleBody3D" unique_id=1837217321 node_paths=PackedStringArray("wheel_front_left", "wheel_front_right")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198558, 0, -5487.98)
 script = ExtResource("1_thhfg")
 wheel_front_left = NodePath("FrontLeftWheel")
 wheel_front_right = NodePath("FrontRightWheel")
 
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("2_6mdng")]
+[node name="Sketchfab_Scene" parent="." unique_id=1323732217 instance=ExtResource("2_6mdng")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1209497651]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0201187, 0.654471, -0.127441)
 shape = SubResource("BoxShape3D_23kn7")
 
-[node name="FrontLeftWheel" type="VehicleWheel3D" parent="."]
+[node name="FrontLeftWheel" type="VehicleWheel3D" parent="." unique_id=894449197]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4962, 0.578761, -2.0415)
 wheel_radius = 0.29
 
-[node name="FrontRightWheel" type="VehicleWheel3D" parent="."]
+[node name="FrontRightWheel" type="VehicleWheel3D" parent="." unique_id=285042753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.08376, 0.765217, -1.57373)
 use_as_steering = true
 wheel_roll_influence = 1.0
@@ -174,17 +180,17 @@ wheel_friction_slip = 3.0
 suspension_stiffness = 30.0
 suspension_max_force = 10000.0
 
-[node name="WheelFront_000_black_0" type="MeshInstance3D" parent="FrontRightWheel"]
+[node name="WheelFront_000_black_0" type="MeshInstance3D" parent="FrontRightWheel" unique_id=674880869]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.9187, -0.377181, 4.13)
 mesh = SubResource("ArrayMesh_811e0")
 skeleton = NodePath("")
 
-[node name="WheelFront_000_BackLight_0" type="MeshInstance3D" parent="FrontRightWheel"]
+[node name="WheelFront_000_BackLight_0" type="MeshInstance3D" parent="FrontRightWheel" unique_id=511116499]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5164, -0.380201, 8.84753)
 mesh = SubResource("ArrayMesh_ntkx2")
 skeleton = NodePath("")
 
-[node name="RearLeftWheel" type="VehicleWheel3D" parent="."]
+[node name="RearLeftWheel" type="VehicleWheel3D" parent="." unique_id=123920271]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.65747, 0.625624, 1.55176)
 use_as_traction = true
 wheel_roll_influence = 1.0
@@ -192,11 +198,11 @@ wheel_radius = 0.29
 suspension_stiffness = 30.0
 suspension_max_force = 10000.0
 
-[node name="WheelFront_002_black_0" type="MeshInstance3D" parent="RearLeftWheel"]
+[node name="WheelFront_002_black_0" type="MeshInstance3D" parent="RearLeftWheel" unique_id=861266387]
 mesh = SubResource("ArrayMesh_fp5b8")
 skeleton = NodePath("")
 
-[node name="RearRightWheel" type="VehicleWheel3D" parent="."]
+[node name="RearRightWheel" type="VehicleWheel3D" parent="." unique_id=52676642]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.10454, 0.386601, 1.83203)
 use_as_traction = true
 wheel_roll_influence = 1.0
@@ -204,11 +210,35 @@ wheel_radius = 0.4
 suspension_stiffness = 30.0
 suspension_max_force = 10000.0
 
-[node name="WheelFront_003_black_0" type="MeshInstance3D" parent="RearRightWheel"]
+[node name="WheelFront_003_black_0" type="MeshInstance3D" parent="RearRightWheel" unique_id=244507006]
 mesh = SubResource("ArrayMesh_fatil")
 skeleton = NodePath("")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=818439694]
 transform = Transform3D(0.994676, -0.101655, -0.0168857, 0.101262, 0.933842, 0.343054, -0.0191047, -0.342937, 0.939164, 0, 2.99749, 5.14404)
+
+[node name="CountdownUI" type="CanvasLayer" parent="." unique_id=1799303987]
+script = ExtResource("3_in3s4")
+
+[node name="CountdownLabel" type="Label" parent="CountdownUI" unique_id=518293727]
+offset_left = 774.0
+offset_top = 183.0
+offset_right = 913.0
+offset_bottom = 403.0
+theme_override_colors/font_color = Color(1, 0.32156864, 0.09019608, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_fonts/font = SubResource("FontVariation_in3s4")
+theme_override_font_sizes/font_size = 100
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="." unique_id=1677236833]
+stream = ExtResource("4_0hd3m")
+autoplay = true
+
+[node name="EngineSound" type="AudioStreamPlayer3D" parent="." unique_id=588142011]
+stream = ExtResource("5_a51iv")
+autoplay = true
+
+[node name="StartSound" type="AudioStreamPlayer3D" parent="." unique_id=702257985]
+stream = ExtResource("6_e8a30")
 
 [editable path="Sketchfab_Scene"]
