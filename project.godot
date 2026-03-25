@@ -52,6 +52,7 @@ steer_right={
 
 [physics]
 
+common/physics_ticks_per_second=100
 common/physics_interpolation=true
 
 [rendering]
