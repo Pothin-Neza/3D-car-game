@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="3D Platformer"
-run/main_scene="res://level.tscn"
+run/main_scene="res://home.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameData="*res://game_data.gd"
 
 [display]
 

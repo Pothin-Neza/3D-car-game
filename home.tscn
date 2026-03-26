@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnjv6sejljako"]
 
-[ext_resource type="Texture2D" uid="uid://btrylndevnfen" path="res://assets/Images/original-926fba03c8104414cfea1bfa111a1d0c.webp" id="1_788gg"]
+[ext_resource type="Texture2D" uid="uid://cjb8mav13je1t" path="res://assets/Images/original-926fba03c8104414cfea1bfa111a1d0c.webp" id="1_788gg"]
 [ext_resource type="FontFile" uid="uid://br3vnrm4cqyno" path="res://assets/fonts/subatomic.tsoonami.ttf" id="1_pvf3q"]
 [ext_resource type="Script" path="res://start_button.gd" id="3_lewtg"]
 [ext_resource type="Script" path="res://quit_button.gd" id="4_ia8v4"]

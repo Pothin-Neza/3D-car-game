@@ -6,14 +6,14 @@ extends Node3D
 @onready var home_btn = $CanvasLayer/Control/RaceCompletePanel/VBoxContainer/ButtonHome
 
 func _ready():
-	play_again_btn.pressed.connect(_on_play_again)
-	home_btn.pressed.connect(_on_home)
+	$CanvasLayer/Control/RaceCompletePanel/VBoxContainer/PlayAgain.pressed.connect(_on_play_again)
+	$CanvasLayer/Control/RaceCompletePanel/VBoxContainer/Home.pressed.connect(_on_home)
 	
 	time_label.text = "Finish Time: " + GameData.finish_time
 	best_lap_label.text = "Best Lap: " + GameData.best_lap
 
 func _on_play_again():
-	get_tree().change_scene_to_file("res://your_game_scene.tscn")
+	get_tree().change_scene_to_file("res://Level.tscn")
 
 func _on_home():
 	get_tree().change_scene_to_file("res://home.tscn")

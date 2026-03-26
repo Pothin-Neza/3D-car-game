@@ -1,7 +1,7 @@
 extends VehicleBody3D
 
 @export var max_steer   : float = 1
-@export var steer_speed : float = 30.0
+@export var steer_speed : float = 60.0
 @export var restitution : float = 0.6
 
 var bounce_timer : float = 0.0  # counts down after a bounce
@@ -15,10 +15,10 @@ func _physics_process(delta):
 	# Count the timer down every frame
 	if bounce_timer > 0:
 		bounce_timer -= delta
-		engine_force = 0        # no engine during bounce
+		engine_force = 0        
 	else:
 		var engine_input = Input.get_axis("move_forward", "move_backward")
-		engine_force = engine_input * 400
+		engine_force = engine_input * 600
 
 func _integrate_forces(state: PhysicsDirectBodyState3D):
 	for i in state.get_contact_count():
@@ -30,4 +30,4 @@ func _integrate_forces(state: PhysicsDirectBodyState3D):
 		var reflected = vel - 2.0 * vel.dot(normal) * normal
 		state.linear_velocity = reflected * restitution
 
-		bounce_timer = 0.2      # freeze engine for 0.2 seconds after bounce
+		bounce_timer = 0.2    
