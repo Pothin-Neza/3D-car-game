@@ -1,10 +1,11 @@
-[gd_scene load_steps=20 format=4 uid="uid://ccb1cxwy30wa2"]
+[gd_scene load_steps=21 format=4 uid="uid://ccb1cxwy30wa2"]
 
 [ext_resource type="Script" path="res://player_car.gd" id="1_thhfg"]
 [ext_resource type="PackedScene" uid="uid://ek8rdkbce8fr" path="res://assets/meshes/car/low_poly_f1_car.glb" id="2_6mdng"]
+[ext_resource type="Script" path="res://camera_rig.gd" id="3_t0c3y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_23r3f"]
-size = Vector3(0.903809, 0.469666, 2.27237)
+size = Vector3(1.29092, 0.659958, 3.45661)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqj3v"]
 resource_name = "black"
@@ -232,17 +233,17 @@ max_contacts_reported = 1
 script = ExtResource("1_thhfg")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("2_6mdng")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017334, 0.265167, -0.0463867)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0174045, 0.360313, -0.0712891)
 shape = SubResource("BoxShape3D_23r3f")
 
 [node name="FrontLeftWheel" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.471565, 0.1627, -0.857422)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.641044, 0.231269, -1.27393)
 use_as_steering = true
-wheel_radius = 0.15
-wheel_friction_slip = 2.0
+wheel_radius = 0.22
+wheel_friction_slip = 3.0
 suspension_stiffness = 10.0
 damping_compression = 0.2
 damping_relaxation = 0.7
@@ -256,11 +257,11 @@ mesh = SubResource("ArrayMesh_v2ed5")
 skeleton = NodePath("")
 
 [node name="FrontRightWheel" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.440441, 0.170068, -0.829102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.637694, 0.231509, -1.26904)
 use_as_steering = true
 wheel_roll_influence = 1.0
-wheel_radius = 0.16
-wheel_friction_slip = 2.0
+wheel_radius = 0.22
+wheel_friction_slip = 3.0
 suspension_stiffness = 10.0
 suspension_max_force = 10000.0
 damping_compression = 0.2
@@ -277,10 +278,11 @@ mesh = SubResource("ArrayMesh_ntkx2")
 skeleton = NodePath("")
 
 [node name="RearLeftWheel" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.471748, 0.149186, 0.723633)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.661124, 0.235508, 1.11133)
 use_as_traction = true
 wheel_roll_influence = 1.0
-wheel_radius = 0.15
+wheel_radius = 0.22
+wheel_friction_slip = 3.0
 suspension_stiffness = 10.0
 suspension_max_force = 10000.0
 damping_compression = 0.2
@@ -291,11 +293,12 @@ mesh = SubResource("ArrayMesh_fp5b8")
 skeleton = NodePath("")
 
 [node name="RearRightWheel" type="VehicleWheel3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.450519, 0.157158, 0.738281)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.658779, 0.241935, 1.11279)
 use_as_traction = true
 wheel_roll_influence = 1.0
-wheel_radius = 0.16
-suspension_stiffness = 7.0
+wheel_radius = 0.22
+wheel_friction_slip = 3.0
+suspension_stiffness = 10.0
 suspension_max_force = 10000.0
 damping_compression = 0.2
 damping_relaxation = 0.7
@@ -304,8 +307,16 @@ damping_relaxation = 0.7
 mesh = SubResource("ArrayMesh_fatil")
 skeleton = NodePath("")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999988, -0.00454371, -0.00175963, 0.00486073, 0.955367, 0.29538, 0.00033897, -0.295385, 0.955378, 0, 2.99749, 5.14404)
+[node name="CameraRig" type="Node3D" parent="."]
+script = ExtResource("3_t0c3y")
+
+[node name="ThirdPersonCam" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(0.999988, -0.00454371, -0.00175963, 0.00486073, 0.955368, 0.29538, 0.00033897, -0.295385, 0.955378, 0, 2.99749, 5.80908)
+current = true
+fov = 43.9119
+
+[node name="DriverCam" type="Camera3D" parent="CameraRig"]
+transform = Transform3D(0.999988, -0.00454371, -0.00175963, 0.00486073, 0.955368, 0.29538, 0.00033897, -0.295385, 0.955378, 0, 0.98539, -0.189453)
 fov = 43.9119
 
 [editable path="Sketchfab_Scene"]

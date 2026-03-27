@@ -1,3 +1,5 @@
+res://player_car.tscn
+res://camera_rig.gd
 res://level.tscn
 res://race_completed.tscn
 res://home.tscn

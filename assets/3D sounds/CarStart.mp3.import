@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c7mlc7vihp14c"
+path="res://.godot/imported/CarStart.mp3-44ab007f1138e55f55b8c804cda49a40.mp3str"
+
+[deps]
+
+source_file="res://assets/3D sounds/CarStart.mp3"
+dest_files=["res://.godot/imported/CarStart.mp3-44ab007f1138e55f55b8c804cda49a40.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
