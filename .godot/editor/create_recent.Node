@@ -1,10 +1,10 @@
 Label
+AudioStreamPlayer
+AudioStreamPlayer3D
 CanvasLayer
 TextureRect
 HBoxContainer
 Node3D
-AudioStreamPlayer3D
-AudioStreamPlayer
 ParallaxBackground
 CollisionShape3D
 Area3D

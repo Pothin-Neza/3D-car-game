@@ -1,8 +1,10 @@
-[gd_scene load_steps=21 format=4 uid="uid://ccb1cxwy30wa2"]
+[gd_scene load_steps=23 format=4 uid="uid://ccb1cxwy30wa2"]
 
 [ext_resource type="Script" path="res://player_car.gd" id="1_thhfg"]
 [ext_resource type="PackedScene" uid="uid://ek8rdkbce8fr" path="res://assets/meshes/car/low_poly_f1_car.glb" id="2_6mdng"]
 [ext_resource type="Script" path="res://camera_rig.gd" id="3_t0c3y"]
+[ext_resource type="AudioStream" uid="uid://cbohr2mlleob7" path="res://assets/3D sounds/car_engine (mp3cut.net).mp3" id="4_67bnp"]
+[ext_resource type="AudioStream" uid="uid://dewd2bfi0vs1l" path="res://assets/3D sounds/CollisionCrash.mp3" id="5_5c4fr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_23r3f"]
 size = Vector3(1.29092, 0.659958, 3.45661)
@@ -226,7 +228,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_t1j5f")
 
 [node name="PlayerCar" type="VehicleBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198558, 0, -5487.98)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95849, 0, -5485.41)
 mass = 80.0
 contact_monitor = true
 max_contacts_reported = 1
@@ -318,5 +320,13 @@ fov = 43.9119
 [node name="DriverCam" type="Camera3D" parent="CameraRig"]
 transform = Transform3D(0.999988, -0.00454371, -0.00175963, 0.00486073, 0.955368, 0.29538, 0.00033897, -0.295385, 0.955378, 0, 0.98539, -0.189453)
 fov = 43.9119
+
+[node name="EngineSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_67bnp")
+volume_db = 52.572
+
+[node name="CrashSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_5c4fr")
+volume_db = 18.286
 
 [editable path="Sketchfab_Scene"]

@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var lives_container = $CountdownUI/LivesContainer
 @onready var timer_label     = $CanvasLayer/TimerLabel
+@onready var lap_label = $CanvasLayer/LapLabel
 
 var lap_count           : int   = 0
 var total_laps_required : int   = 3
@@ -12,6 +13,7 @@ func _ready():
 	GameData.lives     = 4
 	GameData.is_racing = true
 	update_lives_ui()
+	lap_label.text = "LAP: 1/" + str(3)
 
 func _process(delta):
 	if GameData.is_racing:
@@ -43,12 +45,14 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 		lap_count += 1
 		print("Lap %d done in %s" % [lap_count, format_time(lap_time)])
-
+		var display_lap = min(lap_count + 1, 3)
+		lap_label.text = "LAP: " + str(display_lap) + "/" + str(3)
+		
 		if lap_count >= total_laps_required:
 			finish_race()
 
 func finish_race() -> void:
 	GameData.is_racing   = false
 	GameData.finish_time = format_time(elapsed_time)
-	await get_tree().create_timer(0.3).timeout
+	await get_tree().create_timer(1.1).timeout
 	get_tree().change_scene_to_file("res://race_completed.tscn")

@@ -9,9 +9,16 @@ var bounce_timer   : float = 0.0
 var crash_cooldown : float = 0.0
 var prev_speed     : float = 0.0
 
+@onready var engine_sound = $EngineSound
+@onready var crash_sound  = $CrashSound
+
 func _ready():
 	contact_monitor = true
 	max_contacts_reported = 10
+	engine_sound.play()
+
+func _process(_delta):
+	engine_sound.pitch_scale = clamp(0.6 + linear_velocity.length() * 0.05, 0.6, 2.0)
 
 func _physics_process(delta):
 	var steer_input = Input.get_axis("steer_right", "steer_left")
@@ -36,6 +43,7 @@ func _integrate_forces(state: PhysicsDirectBodyState3D):
 		if crash_cooldown <= 0:
 			GameData.lives -= 1
 			crash_cooldown = 1.5
+			crash_sound.play()
 
 			var level = get_tree().current_scene
 			if level.has_method("update_lives_ui"):
