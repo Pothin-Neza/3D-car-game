@@ -1,5 +1,7 @@
-res://player_car.tscn
-res://camera_rig.gd
 res://level.tscn
 res://race_completed.tscn
 res://home.tscn
+res://player_car.tscn
+res://game_data.gd
+res://level.gd
+res://player_car.gd

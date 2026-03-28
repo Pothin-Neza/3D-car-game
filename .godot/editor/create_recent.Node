@@ -1,3 +1,5 @@
+TextureRect
+HBoxContainer
 Node3D
 Label
 AudioStreamPlayer3D
