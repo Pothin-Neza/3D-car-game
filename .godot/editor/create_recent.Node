@@ -1,11 +1,11 @@
+Label
+CanvasLayer
 TextureRect
 HBoxContainer
 Node3D
-Label
 AudioStreamPlayer3D
 AudioStreamPlayer
 ParallaxBackground
-CanvasLayer
 CollisionShape3D
 Area3D
 MeshInstance3D

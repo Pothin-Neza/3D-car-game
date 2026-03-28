@@ -1,34 +1,54 @@
 extends Node3D
 
-# Matches the typo in your scene tree exactly
 @onready var lives_container = $CountdownUI/LivesContainer
+@onready var timer_label     = $CanvasLayer/TimerLabel
 
-var lap_count: int = 0
-var total_laps_required: int = 3
+var lap_count           : int   = 0
+var total_laps_required : int   = 3
+var elapsed_time        : float = 0.0
+var lap_start_time      : float = 0.0
 
 func _ready():
-	# Initialize lives in the global singleton
-	GameData.lives = 4
+	GameData.lives     = 4
+	GameData.is_racing = true
 	update_lives_ui()
 
-# This is the function the car will call when it crashes
+func _process(delta):
+	if GameData.is_racing:
+		elapsed_time += delta
+		timer_label.text = format_time(elapsed_time)
+
+func format_time(seconds: float) -> String:
+	var mins = int(seconds) / 60
+	var secs = int(seconds) % 60
+	var ms   = int(fmod(seconds, 1.0) * 100)
+	return "%02d:%02d:%02d" % [mins, secs, ms]
+
 func update_lives_ui():
 	if not lives_container: return
-	
 	var children = lives_container.get_children()
 	for i in range(children.size()):
-		# Show the lightning bolt only if its index is less than current lives
 		children[i].visible = i < GameData.lives
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.name == "PlayerCar":
+		var lap_time = elapsed_time - lap_start_time
+		lap_start_time = elapsed_time
+
+		if GameData.best_lap == "00:00":
+			GameData.best_lap = format_time(lap_time)
+		else:
+			if lap_time < float(GameData.best_lap.replace(":", "")):
+				GameData.best_lap = format_time(lap_time)
+
 		lap_count += 1
-		print("Lap crossed! Current laps: ", lap_count)
-		
+		print("Lap %d done in %s" % [lap_count, format_time(lap_time)])
+
 		if lap_count >= total_laps_required:
 			finish_race()
 
 func finish_race() -> void:
-	print("Race Finished!")
+	GameData.is_racing   = false
+	GameData.finish_time = format_time(elapsed_time)
 	await get_tree().create_timer(0.3).timeout
 	get_tree().change_scene_to_file("res://race_completed.tscn")
