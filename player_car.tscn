@@ -227,7 +227,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_t1j5f")
 
-[node name="PlayerCar" type="VehicleBody3D"]
+[node name="PlayerCar" type="VehicleBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.95849, 0, -5485.41)
 mass = 80.0
 contact_monitor = true
