@@ -1,6 +1,6 @@
 res://level.tscn
-res://player_car.tscn
-res://player_car.gd
+res://level.gd
 res://race_completed.tscn
 res://home.tscn
-res://level.gd
+res://player_car.tscn
+res://debugShape.tscn

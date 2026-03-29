@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://txi7jltjq6ep"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m1vss"]
-size = Vector3(4.40869, 4.22665, 5.10596)
+size = Vector3(2.42194, 2.35721, 2.39472)
 
 [sub_resource type="BoxMesh" id="BoxMesh_onpgw"]
 
@@ -15,10 +15,10 @@ transform = Transform3D(0.596922, 0.694812, -0.401148, -1.49013e-08, 0.499998, 0
 shadow_enabled = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.146391, -0.12709, 0.77659)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00348294, 0.00129604, -0.000813603)
 shape = SubResource("BoxShape3D_m1vss")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 2.4, 0, 0, 0)
 mesh = SubResource("BoxMesh_onpgw")
 surface_material_override/0 = SubResource("StandardMaterial3D_xtgkr")
