@@ -8,8 +8,8 @@ func _ready():
 	driver_cam.current = false
 
 func _input(event):
-	if Input.is_action_pressed("cameraSwitch"):  # or add a custom "cam_switch" action
-		print("C pressed")  # check Output panel when you press C
+	if Input.is_action_pressed("cameraSwitch"):  
+		print("C pressed")  
 		if third_person_cam.current == true :
 			third_person_cam.current = false
 			driver_cam.current       = true
